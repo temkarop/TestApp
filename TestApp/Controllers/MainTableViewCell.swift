@@ -13,11 +13,12 @@ class MainTableViewCell: UITableViewCell {
     @IBOutlet weak var postName: UILabel!
     @IBOutlet weak var postDescription: UILabel!
     
-    let baseURL = "https://scripts.qexsystems.ru/test_ios/public/"
+    let baseURL = "https://scripts.qexsystems.ru/test_ios/public"
     
     func configur(with post: Post) {
         postName.text = post.name
         postDescription.text = post.description
+        postImage.image = nil
 
         DispatchQueue.global().async {
             guard let photoUrl = post.photo else { return }
@@ -25,7 +26,7 @@ class MainTableViewCell: UITableViewCell {
             guard let imageData = try? Data(contentsOf: urlImage) else { return }
 
             DispatchQueue.main.async {
-                self.postImage.image = UIImage(data: imageData)
+            self.postImage.image = UIImage(data: imageData)
             }
         }
     }

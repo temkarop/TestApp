@@ -22,11 +22,9 @@ class MainTableViewController: UITableViewController {
         tableView.rowHeight = 110
         
         networkFetchData.fetchPosts(endPoint: "/posts") { (searchPosts) in
-            
             guard let searchPosts = searchPosts else { return }
-            self.searchPosts = searchPosts
+                self.searchPosts = searchPosts
                 self.tableView.reloadData()
-        
         }
     }
 
@@ -67,13 +65,11 @@ extension MainTableViewController {
         
         let newNamePost = newPost.newNamePost.text
         let newDescriptionPost = newPost.newDescriptionPost.text
-        let newImagePost = newPost.newImagePost.image?.toBase64(format: .jpeg(1))
-        
-        
+        let newImagePost = newPost.newImagePost.image
         
         let post = ["name": newNamePost,
                     "description": newDescriptionPost,
-                    "photo": newImagePost]
+                    "photo": newImagePost?.toBase64(format: .jpeg(1))]
         
             networkService.postToSave(endPoint: "/post/create", parameters: post as [String : Any]) { [weak self] (result) in
             switch result{
@@ -83,7 +79,6 @@ extension MainTableViewController {
                 DispatchQueue.main.async {
                     self?.tableView.reloadData()
                 }
-
             case .failure(let error):
                 print(error.localizedDescription)
             }

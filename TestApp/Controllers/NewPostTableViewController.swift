@@ -9,11 +9,6 @@ import UIKit
 
 class NewPostTableViewController: UITableViewController {
     
-//    var post: Post?
-    let alertService = AlertService()
-//    let networkService = NetworkService()
-    let baseURL = "https://scripts.qexsystems.ru/test_ios/public/api"
-    
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
     @IBOutlet weak var newImagePost: UIImageView!
@@ -48,50 +43,10 @@ class NewPostTableViewController: UITableViewController {
         } else {
             view.endEditing(true)
         }
-//        func saveNewPost() {
-//            let newNamePost = newNamePost.text
-//            let newDescriptionPost = newDescriptionPost.text
-//            
-//            let post = ["name": newNamePost,
-//                        "description": newDescriptionPost]
-//    //                       "photo": newImagePost
-//            
-//                networkService.postToSave(endPoint: "/post/create", parameters: post as [String : Any]) { [weak self] (result) in
-//                switch result{
-//                    
-//                case .success(let post):
-//                    self?.performSegue(withIdentifier: "savePost", sender: post)
-//                case .failure(let error):
-//                    print(error.localizedDescription)
-//                }
-//            }
-//        }
     }
-//    @IBAction func savaButton(_ sender: Any) {
-//
-//        let newNamePost = newNamePost.text
-//        let newDescriptionPost = newDescriptionPost.text
-//
-//        let post = ["name": newNamePost,
-//                    "description": newDescriptionPost]
-////                       "photo": newImagePost
-//
-//            networkService.postToSave(endPoint: "/post/create", parameters: post as [String : Any]) { [weak self] (result) in
-//            switch result{
-//
-//            case .success(let post):
-//                self?.performSegue(withIdentifier: "savePost", sender: post)
-//            case .failure(let error):
-//                print(error.localizedDescription)
-//            }
-//        }
-//    }
-    
-    
     @IBAction func cancelAction(_ sender: Any) {
         dismiss(animated: true)
     }
-    
 }
 // MARK: Text field delegate
 
